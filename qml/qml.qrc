@@ -1,0 +1,9 @@
+<RCC>
+    <qresource prefix="/qml">
+        <file>AppShell.qml</file>
+        <file>components/FocusOutline.qml</file>
+        <file>components/NavigationButton.qml</file>
+        <file>styles/AppStyle.qml</file>
+        <file>views/SectionView.qml</file>
+    </qresource>
+</RCC>

@@ -1,0 +1,23 @@
+# Build directories
+/build/
+/build-debug/
+
+# Qt Creator
+*.pro.user
+*.pro.user.*
+*.user
+
+# CMake
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+Makefile
+compile_commands.json
+
+# VSCode
+.vscode/
+
+# Misc
+*.qmlc
+*.jsc
+.DS_Store
