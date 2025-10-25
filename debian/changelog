@@ -1,0 +1,5 @@
+gameperf-manager (1.0.0-1) unstable; urgency=medium
+
+  * Initial release with AppImage and Debian packaging support.
+
+ -- GamePerf Team <support@gameperf.example.com>  Sat, 25 Oct 2024 02:49:00 +0000

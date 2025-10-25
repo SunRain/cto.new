@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=GamePerf Manager
+Comment=Gaming performance management and library integration
+Exec=gameperf-manager
+Icon=gameperf-manager
+Terminal=false
+Categories=Game;Utility;System;
+StartupNotify=true
+StartupWMClass=gameperf-manager

@@ -1,0 +1,22 @@
+#!/usr/bin/make -f
+
+# Export flags
+export DH_VERBOSE = 1
+
+%:
+	dh $@ --buildsystem=cmake --builddirectory=_build
+
+override_dh_auto_configure:
+	dh_auto_configure --builddirectory=_build -- \
+		-DCMAKE_BUILD_TYPE=Release \
+		-DCMAKE_INSTALL_PREFIX=/usr
+
+override_dh_auto_install:
+	dh_auto_install --builddirectory=_build
+
+	dh_install systemd/gameperf-daemon.service usr/lib/systemd/system/
+	dh_install polkit/org.gameperf.daemon.policy usr/share/polkit-1/actions/
+	dh_install udev/99-gameperf.rules usr/lib/udev/rules.d/
+	dh_install scripts/install-performance-daemon.sh usr/lib/gameperf-manager/
+	dh_install --sourcedir=debian/gameperf-manager usr/libexec/gameperf-daemon usr/libexec/
+	dh_systemd_enable --name=gameperf-daemon

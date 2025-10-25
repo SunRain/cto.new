@@ -1,0 +1,36 @@
+# Build artifacts
+/build/
+/build-*/
+CMakeCache.txt
+CMakeFiles/
+*.o
+*.obj
+*.a
+*.so
+*.dll
+*.dylib
+Makefile
+ninja.build
+compile_commands.json
+Testing/
+*.AppImage
+*.deb
+*.tar.gz
+*.tar.xz
+
+# Qt Creator/CLion
+*.user
+*.user.*
+.idea/
+.vscode/
+
+# Python
+__pycache__/
+*.pyc
+
+# Logs
+*.log
+
+# Packaging outputs
+packaging/appimage/*.AppImage
+packaging/debian/*.deb

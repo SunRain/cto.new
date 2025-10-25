@@ -1,0 +1,19 @@
+#!/bin/sh
+set -e
+
+case "$1" in
+    configure)
+        udevadm control --reload-rules || true
+        udevadm trigger || true
+
+        if ! getent group gameperf > /dev/null; then
+            groupadd -r gameperf
+        fi
+
+        systemctl daemon-reload || true
+        ;;
+esac
+
+#DEBHELPER#
+
+exit 0
