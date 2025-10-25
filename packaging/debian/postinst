@@ -11,6 +11,7 @@ case "$1" in
         fi
 
         systemctl daemon-reload || true
+        systemctl enable --now gameperf-daemon.service || true
         ;;
 esac
 
