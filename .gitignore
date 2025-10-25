@@ -1,0 +1,46 @@
+# Build directories
+build/
+build-*/
+cmake-build-*/
+*.o
+*.a
+*.so
+*.dylib
+*.dll
+*.exe
+
+# CMake
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+Makefile
+*.cmake
+!CMakeLists.txt
+
+# Qt
+*.qmlc
+*.jsc
+*.autosave
+*.user
+*.user.*
+.qmake.stash
+moc_*.cpp
+qrc_*.cpp
+ui_*.h
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Test artifacts
+*.gcov
+*.gcda
+*.gcno
+coverage/
+
+# Executables
+runtime-manager
