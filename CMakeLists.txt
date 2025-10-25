@@ -20,6 +20,10 @@ add_library(runtime_manager STATIC
     src/runtime/RunningManager.cpp
     src/runtime/ProcessMetricsProvider.hpp
     src/runtime/ProcessMetricsProvider.cpp
+    src/launch/GamescopeLauncher.hpp
+    src/launch/GamescopeLauncher.cpp
+    src/launch/PerformanceProfile.hpp
+    src/launch/PerformanceProfile.cpp
 )
 
 target_include_directories(runtime_manager
@@ -68,5 +72,22 @@ target_link_libraries(runtime_manager_tests
         Qt6::Test
 )
 
+qt_add_executable(gamescope_launcher_tests
+    tests/GamescopeLauncherTest.cpp
+)
+
+target_include_directories(gamescope_launcher_tests
+    PRIVATE
+        ${CMAKE_CURRENT_SOURCE_DIR}/src
+)
+
+target_link_libraries(gamescope_launcher_tests
+    PRIVATE
+        runtime_manager
+        Qt6::Core
+        Qt6::Test
+)
+
 enable_testing()
 add_test(NAME RunningManagerTests COMMAND runtime_manager_tests)
+add_test(NAME GamescopeLauncherTests COMMAND gamescope_launcher_tests)

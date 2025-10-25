@@ -4,17 +4,23 @@ A Qt/QML-based runtime management module for tracking and managing launched game
 
 ## Features
 
+- **Gamescope Launcher**: Launch games through Gamescope with customizable performance profiles
+- **Performance Profiles**: Per-game settings for FPS cap, scaling (FSR), VSync, and window modes
+- **Platform Support**: Native, Steam, Epic, Wine, and Proton compatibility layers
 - **Process Monitoring**: Track launched games with their PIDs
 - **Performance Metrics**: Monitor CPU, GPU, RAM usage, temperatures, power consumption, and FPS
 - **Alert System**: Automatic alerts for overheating or abnormal resource usage
 - **Suspend/Resume**: Suspend and resume games (where supported)
 - **Force Quit**: Forcefully terminate unresponsive games
 - **UI Overlay**: QML-based overlay accessible via quick menu
+- **Exit to Shell**: Return to shell from running games
 
 ## Components
 
 ### Backend
 
+- **GamescopeLauncher**: Launches games with Gamescope wrapper and performance profiles
+- **PerformanceProfile**: Configurable per-game settings for graphics and performance
 - **RunningManager**: Main manager class that tracks running games and monitors metrics
 - **ProcessMetricsProvider**: Abstract interface for metrics collection
 - **LinuxMetricsProvider**: Linux-specific implementation using `/proc` filesystem
@@ -50,6 +56,47 @@ Or run the test executable directly:
 ```
 
 ## Usage
+
+### Launching a Game with Gamescope
+
+```cpp
+Launch::LaunchConfig config;
+config.titleId = "game-001";
+config.displayName = "My Game";
+config.executable = "/usr/bin/mygame";
+config.platform = Launch::LaunchPlatform::Native;
+
+Launch::PerformanceProfile profile = Launch::PerformanceProfile::defaultProfile();
+profile.fpsCap = 60;
+profile.scaling = Launch::ScalingMode::FSR;
+profile.vsync = true;
+profile.windowMode = Launch::WindowMode::Fullscreen;
+config.profile = profile;
+
+gamescopeLauncher->launch(config);
+```
+
+### Launching Wine/Proton Games
+
+```cpp
+Launch::LaunchConfig config;
+config.titleId = "game-002";
+config.displayName = "Windows Game";
+config.executable = "C:\\Game\\game.exe";
+config.platform = Launch::LaunchPlatform::Proton;
+config.protonPath = "/path/to/proton";
+config.winePrefix = "/home/user/.wine";
+config.profile = Launch::PerformanceProfile::defaultProfile();
+
+gamescopeLauncher->launch(config);
+```
+
+### Dry-Run Mode for Testing
+
+```cpp
+config.dryRun = true;
+gamescopeLauncher->launch(config);
+```
 
 ### Registering a Game
 
