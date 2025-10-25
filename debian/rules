@@ -1,0 +1,14 @@
+#!/usr/bin/make -f
+
+export DH_VERBOSE = 1
+
+%:
+	dh $@ --buildsystem=cmake --builddirectory=_build
+
+override_dh_auto_configure:
+	dh_auto_configure --builddirectory=_build -- \
+		-DCMAKE_BUILD_TYPE=Release \
+		-DCMAKE_INSTALL_PREFIX=/usr
+
+override_dh_auto_install:
+	dh_auto_install --builddirectory=_build

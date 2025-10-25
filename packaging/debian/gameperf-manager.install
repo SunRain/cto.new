@@ -1,0 +1,12 @@
+usr/bin/gameperf-manager
+usr/libexec/gameperf-daemon
+usr/share/applications/gameperf-manager.desktop
+usr/share/doc/gameperf-manager/LICENSE
+usr/share/doc/gameperf-manager/README.md
+usr/share/icons/hicolor/64x64/apps/gameperf-manager.png
+usr/share/icons/hicolor/128x128/apps/gameperf-manager.png
+usr/share/icons/hicolor/scalable/apps/gameperf-manager.svg
+lib/systemd/system/gameperf-daemon.service
+usr/share/polkit-1/actions/org.gameperf.daemon.policy
+lib/udev/rules.d/99-gameperf.rules
+lib/gameperf-manager/install-performance-daemon.sh

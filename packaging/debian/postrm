@@ -1,0 +1,14 @@
+#!/bin/sh
+set -e
+
+case "$1" in
+    purge|remove)
+        systemctl daemon-reload || true
+        udevadm control --reload-rules || true
+        udevadm trigger || true
+        ;;
+esac
+
+#DEBHELPER#
+
+exit 0

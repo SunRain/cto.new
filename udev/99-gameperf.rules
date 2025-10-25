@@ -1,0 +1,2 @@
+SUBSYSTEM=="input", GROUP="gameperf", MODE="0660"
+KERNEL=="hwmon*", GROUP="gameperf", MODE="0660"
