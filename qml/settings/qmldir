@@ -1,0 +1,9 @@
+module Settings
+SettingsHome 1.0 SettingsHome.qml
+NetworkPage 1.0 pages/NetworkPage.qml
+DisplayPage 1.0 pages/DisplayPage.qml
+AudioPage 1.0 pages/AudioPage.qml
+LanguagePage 1.0 pages/LanguagePage.qml
+AccessibilityPage 1.0 pages/AccessibilityPage.qml
+AccountsPage 1.0 pages/AccountsPage.qml
+DownloadsPage 1.0 pages/DownloadsPage.qml
