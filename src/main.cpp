@@ -1,3 +1,4 @@
+#include "launch/GamescopeLauncher.hpp"
 #include "runtime/RunningManager.hpp"
 
 #include <QCoreApplication>
@@ -12,9 +13,16 @@ int main(int argc, char* argv[])
     QGuiApplication app(argc, argv);
 
     Runtime::RunningManager manager;
+    Launch::GamescopeLauncher launcher(&manager);
+
+    QObject::connect(&manager, &Runtime::RunningManager::forceQuitRequested, &launcher,
+                     [&launcher](const QString& titleId, qint64) {
+                         launcher.exitToShell(titleId);
+                     });
 
     QQmlApplicationEngine engine;
     engine.rootContext()->setContextProperty("runningManager", &manager);
+    engine.rootContext()->setContextProperty("gamescopeLauncher", &launcher);
 
     const QUrl url(u"qrc:/qt/qml/RuntimeOverlay/RunningOverlay.qml"_qs);
     QObject::connect(

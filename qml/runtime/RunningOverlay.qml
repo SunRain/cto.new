@@ -12,6 +12,7 @@ ApplicationWindow {
     focus: true
 
     property var runningManager: null
+    property var gamescopeLauncher: null
 
     Keys.onPressed: function(event) {
         if (event.key === Qt.Key_Guide) {
@@ -40,6 +41,36 @@ ApplicationWindow {
                 font.bold: true
                 color: "#ffffff"
                 Layout.fillWidth: true
+            }
+
+            RowLayout {
+                Layout.fillWidth: true
+                spacing: 10
+
+                Button {
+                    text: qsTr("Toggle Overlay")
+                    Layout.preferredWidth: 160
+                    onClicked: {
+                        if (gamescopeLauncher) {
+                            gamescopeLauncher.toggleOverlay("")
+                        }
+                    }
+                }
+
+                Button {
+                    text: qsTr("Exit to Shell")
+                    Layout.preferredWidth: 160
+                    enabled: runningManager && runningManager.games.length > 0
+                    onClicked: {
+                        if (gamescopeLauncher) {
+                            gamescopeLauncher.exitToShell("")
+                        }
+                    }
+                }
+
+                Item {
+                    Layout.fillWidth: true
+                }
             }
 
             Row {
