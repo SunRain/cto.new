@@ -62,16 +62,13 @@ install(FILES resources/icons/hicolor/128x128/apps/gameperf-manager.png
 install(FILES resources/icons/hicolor/scalable/apps/gameperf-manager.svg
     DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/icons/hicolor/scalable/apps)
 
-install(PROGRAMS scripts/install-performance-daemon.sh DESTINATION ${CMAKE_INSTALL_LIBDIR}/gameperf-manager)
-install(FILES README.md DESTINATION ${CMAKE_INSTALL_DOCDIR})
-install(FILES LICENSE DESTINATION ${CMAKE_INSTALL_DOCDIR})
+install(PROGRAMS scripts/install-performance-daemon.sh DESTINATION lib/gameperf-manager)
+install(FILES README.md DESTINATION share/doc/${PROJECT_NAME})
+install(FILES LICENSE DESTINATION share/doc/${PROJECT_NAME})
 
-install(FILES systemd/gameperf-daemon.service
-    DESTINATION ${CMAKE_INSTALL_LIBDIR}/systemd/system)
-install(FILES polkit/org.gameperf.daemon.policy
-    DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/polkit-1/actions)
-install(FILES udev/99-gameperf.rules
-    DESTINATION ${CMAKE_INSTALL_LIBDIR}/udev/rules.d)
+install(FILES systemd/gameperf-daemon.service DESTINATION lib/systemd/system)
+install(FILES polkit/org.gameperf.daemon.policy DESTINATION share/polkit-1/actions)
+install(FILES udev/99-gameperf.rules DESTINATION lib/udev/rules.d)
 
 set(CPACK_PACKAGE_NAME "gameperf-manager")
 set(CPACK_PACKAGE_VENDOR "GamePerf Team")
